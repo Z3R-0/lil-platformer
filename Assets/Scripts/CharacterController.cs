@@ -21,6 +21,8 @@ public class CharacterController : MonoBehaviour {
         rb = this.GetComponent<Rigidbody2D>();
     }
 
+#if UNITY_EDITOR || UNITY_STANDALONE
+
     #region Input Action Listeners
 
     public void JumpAction(InputAction.CallbackContext obj) {
@@ -60,6 +62,8 @@ public class CharacterController : MonoBehaviour {
     }
 
     #endregion
+
+#endif
 
     // Update function ensures the movement is handled every grame rather than only on a key press
     private void Update() {
