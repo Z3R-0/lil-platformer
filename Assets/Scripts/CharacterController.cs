@@ -16,14 +16,18 @@ public class CharacterController : MonoBehaviour {
     private bool moveRight;
     private bool isGrounded;
 
+    // Reference to virtual joystick for android input handling
+    [SerializeField] private Joystick joystick;
+    public Joystick Joystick {
+        get { return joystick; }
+    }
+
     // When this object is enables, get a reference to it's Rigidbody2D element
     void OnEnable() {
         rb = this.GetComponent<Rigidbody2D>();
     }
 
-#if UNITY_EDITOR || UNITY_STANDALONE
-
-    #region Input Action Listeners
+    #region Windows Input Listeners
 
     public void JumpAction(InputAction.CallbackContext obj) {
         if (obj.phase == InputActionPhase.Performed)
@@ -46,7 +50,19 @@ public class CharacterController : MonoBehaviour {
 
     #endregion
 
-    #region Input Action Executers
+    #region Android Input Listeners
+
+    public float HorizontalJoystickValue() {
+        return Joystick.Horizontal;
+    }
+
+    public void JumpButtonListener() {
+        Jump();
+    }
+
+    #endregion
+
+    #region Input Executers
 
     private void Jump() {
         if (isGrounded)
@@ -60,17 +76,23 @@ public class CharacterController : MonoBehaviour {
     public void MoveRight() {
         transform.position += new Vector3(1f, 0, 0) * moveSpeed * Time.deltaTime;
     }
+    
+    private void MoveHorizontal(float horizontalAxisValue) {
+        transform.position += new Vector3(horizontalAxisValue, 0, 0) * moveSpeed * Time.deltaTime;
+    }
 
     #endregion
 
-#endif
-
     // Update function ensures the movement is handled every grame rather than only on a key press
     private void Update() {
+#if UNITY_EDITOR || UNITY_STANDALONE
         if (moveLeft)
             MoveLeft();
         if (moveRight)
             MoveRight();
+#elif UNITY_ANDROID
+        MoveHorizontal(HorizontalJoystickValue());
+#endif
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {

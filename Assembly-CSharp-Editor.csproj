@@ -704,9 +704,13 @@
       <Project>{F3F0A72B-98E1-963E-2F45-DB64F9327CDE}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
-    <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
-      <Project>{6EABD328-3E69-73E8-CF1F-D86CA659755B}</Project>
-      <Name>Assembly-CSharp-Editor-firstpass</Name>
+    <ProjectReference Include="LilPlatformer.csproj">
+      <Project>{A97E990B-B378-7188-FC70-F6CB2698E95F}</Project>
+      <Name>LilPlatformer</Name>
+    </ProjectReference>
+    <ProjectReference Include="JoystickPack.csproj">
+      <Project>{96BF2DE2-5F87-E6B1-2BC0-18759CB98DD2}</Project>
+      <Name>JoystickPack</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -52,10 +52,7 @@
     <UnityVersion>2020.1.0f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CharacterController.cs" />
-    <Compile Include="Assets\Scripts\LevelManager.cs" />
     <Compile Include="Assets\Controls\ControlsSet.cs" />
-    <Compile Include="Assets\Scripts\EndGate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -672,6 +669,14 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{52C158D8-AD3F-FE4D-5529-317A19714F97}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="LilPlatformer.csproj">
+      <Project>{A97E990B-B378-7188-FC70-F6CB2698E95F}</Project>
+      <Name>LilPlatformer</Name>
+    </ProjectReference>
+    <ProjectReference Include="JoystickPack.csproj">
+      <Project>{96BF2DE2-5F87-E6B1-2BC0-18759CB98DD2}</Project>
+      <Name>JoystickPack</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
